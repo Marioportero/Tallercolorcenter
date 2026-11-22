@@ -1,0 +1,27 @@
+_originales/
+shots/
+.taste-skill/
+.playwright-mcp/
+names.json
+.mcp.json
+# partes del kit de diseño que la web no carga
+assets/photos/
+assets/objects/
+assets/scenes/
+assets/effects/
+assets/components/
+assets/diagrams/
+assets/starter.html
+assets/layout/img/
+assets/layout/*.html
+assets/layout/*.mjs
+assets/layout/*.json
+assets/layout/demo.css
+assets/icons/*
+!assets/icons/icon.css
+assets/moments/*
+!assets/moments/moments.js
+!assets/moments/lib.js
+!assets/moments/picture-develops/
+assets/moments/picture-develops/*.html
+assets/ui/*/demo*

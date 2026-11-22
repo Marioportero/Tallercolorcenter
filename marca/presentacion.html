@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Colorcenter: logo nuevo</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "IBM Plex Sans", sans-serif; background: #f4f1ec; color: #1d1b18; }
+  .sheet { width: 1440px; padding: 64px 80px; display: grid; gap: 24px; grid-template-columns: repeat(12, 1fr); }
+  .card { border-radius: 20px; display: grid; place-items: center; min-height: 300px; position: relative; }
+  .card small { position: absolute; left: 24px; bottom: 18px; font-size: 13px; opacity: .65; }
+  .light { background: #fff; grid-column: span 7; }
+  .dark { background: #1d1b18; color: #f4f1ec; grid-column: span 5; }
+  .orange { background: #c2410c; color: #fff; grid-column: span 4; }
+  .icons { background: #e9e4dc; grid-column: span 4; }
+  .mono { background: #fff; grid-column: span 4; }
+  .sign { grid-column: span 12; min-height: 260px; background: #2a2825; }
+  .lockup { display: flex; align-items: center; gap: 18px; }
+  .lockup svg { width: var(--s, 88px); height: var(--s, 88px); flex: none; }
+  .name { font-size: var(--f, 52px); font-weight: 500; letter-spacing: -0.025em; line-height: 1; }
+  .tag { font-size: calc(var(--f, 52px) * .27); font-weight: 500; letter-spacing: .14em; text-transform: uppercase; opacity: .7; margin-top: .45em; }
+  .row { display: flex; gap: 28px; align-items: end; }
+  .row img { display: block; }
+  .board { background: #151413; border: 10px solid #0e0d0c; border-radius: 6px; padding: 26px 56px; box-shadow: 0 20px 40px rgb(0 0 0 / .4); }
+  h1 { grid-column: span 12; font-weight: 400; font-size: 40px; letter-spacing: -0.025em; margin: 0 0 8px; }
+  p.lead { grid-column: span 12; margin: -8px 0 16px; font-size: 18px; max-width: 70ch; color: #3d3a36; }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <h1>Colorcenter, logo nuevo</h1>
+  <p class="lead">Una C hecha con las tres capas de un pintado: imprimación, color y barniz. En el naranja del taller.</p>
+
+  <div class="card light">
+    <div class="lockup"><svg viewBox="0 0 64 64"><use href="simbolo.svg#a"/></svg></div>
+  </div>
+  <div class="card dark"></div>
+  <div class="card orange"></div>
+  <div class="card icons"></div>
+  <div class="card mono"></div>
+  <div class="card sign"></div>
+</div>
+<template id="mark">
+  <g fill="none" stroke-width="6.5"><path d="M53.29 17.08 A26 26 0 1 0 53.29 46.92" class="c1"/><path d="M46.74 21.67 A18 18 0 1 0 46.74 42.33" class="c2"/><path d="M40.19 26.26 A10 10 0 1 0 40.19 37.74" class="c3"/></g>
+</template>
+<script>
+  const mark = (c1, c2, c3, size) => `<svg viewBox="0 0 64 64" style="--s:${size}px"><g fill="none" stroke-width="6.5"><path d="M53.29 17.08 A26 26 0 1 0 53.29 46.92" stroke="${c1}"/><path d="M46.74 21.67 A18 18 0 1 0 46.74 42.33" stroke="${c2}"/><path d="M40.19 26.26 A10 10 0 1 0 40.19 37.74" stroke="${c3}"/></g></svg>`;
+  const lock = (m, ink, f, s) => `<div class="lockup" style="--f:${f}px;--s:${s}px;color:${ink}">${m}<div><div class="name">Colorcenter</div><div class="tag">Chapa y pintura · Vallecas</div></div></div>`;
+  const q = s => document.querySelector(s);
+  q('.light').innerHTML = lock(mark('#c2410c','#e0632a','#f4a261',96), '#1d1b18', 60, 96) + '<small>Principal, sobre blanco</small>';
+  q('.dark').innerHTML = lock(mark('#e0632a','#f08a4b','#f7b98a',72), '#f4f1ec', 44, 72) + '<small>Sobre oscuro</small>';
+  q('.orange').innerHTML = lock(mark('#fff','rgba(255,255,255,.75)','rgba(255,255,255,.5)',56), '#fff', 32, 56) + '<small>Sobre naranja</small>';
+  q('.icons').innerHTML = '<div class="row"><img src="favicon.svg" width="128" height="128" alt=""><img src="favicon.svg" width="64" height="64" alt=""><img src="favicon.svg" width="32" height="32" alt=""><img src="favicon.svg" width="16" height="16" alt=""></div><small>Icono: web, WhatsApp, Google</small>';
+  q('.mono').innerHTML = lock(mark('#1d1b18','#1d1b18','#1d1b18',56), '#1d1b18', 32, 56) + '<small>Una tinta: sellos, facturas, vinilo</small>';
+  q('.sign').innerHTML = '<div class="board">' + lock(mark('#e0632a','#f08a4b','#f7b98a',110), '#f4f1ec', 78, 110) + '</div><small style="color:#fff">En el rótulo de la fachada</small>';
+</script>
+</body>
+</html>
