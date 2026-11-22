@@ -84,6 +84,16 @@
   @media (max-width: 639px) {
     .form-panel { padding: var(--s-5); }
     .badge-frame { height: 300px; padding: var(--s-5); }
+    /* móvil: cada sección mide lo que su contenido (sin huecos de pantalla completa) y el pie queda al final */
+    :root { --padt: 64px; --padb: 32px; }
+    main > section.section:not(.hero), footer.footer.closing { min-height: 0; }
+    main > section.section:not(.hero) { padding-bottom: var(--padb); }
+    footer.footer.closing { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
+    main > section.section:not(.hero) > .wrap .fill { flex: none; height: auto; min-height: 0; }
+    footer.closing .closing__cta .close__media { flex: none; min-height: 0; aspect-ratio: 4 / 3; }
+    footer.footer.closing > .wrap { display: block; }
+    footer.closing .closing__links { margin-top: var(--s-8); }
+    .develop, .badge-frame { margin-top: var(--s-6); }
   }
 </style>
 </head>
