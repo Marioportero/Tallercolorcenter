@@ -18,6 +18,7 @@ assets/layout/*.mjs
 assets/layout/*.json
 assets/layout/demo.css
 assets/icons/*
+!assets/fonts/
 !assets/icons/icon.css
 assets/moments/*
 !assets/moments/moments.js
