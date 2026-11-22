@@ -103,6 +103,16 @@
   .map-pin svg { width: 32px; height: 32px; rotate: 45deg; }
   .map-label { position: absolute; left: 16px; bottom: 16px; background: var(--bg); padding: 8px 14px; border-radius: 999px; font-size: var(--t-small); font-weight: 500; box-shadow: 0 2px 8px rgb(0 0 0 / .12); }
   .map-credit { position: absolute; right: 8px; bottom: 6px; font-size: 13px; color: #3d3a36; background: rgb(255 255 255 / .8); padding: 0 6px; border-radius: 4px; }
+  /* todas las anchuras: cada sección mide lo que su contenido (sin huecos de pantalla completa); el inicio sigue a pantalla completa */
+  :root { --padt: 96px; --padb: 48px; }
+  main > section.section:not(.hero), footer.footer.closing { height: auto; min-height: 0; }
+  main > section.section:not(.hero) { padding-bottom: var(--padb); }
+  main > section.section:not(.hero) > .wrap { height: auto; }
+  main > section.section:not(.hero) > .wrap .fill { flex: none; min-height: 0; }
+  #servicios .frame.frame--fill { height: 520px; }
+  footer.footer.closing > .wrap { height: auto; display: block; }
+  footer.closing .closing__links { margin-top: var(--s-8); }
+  .close-pair { flex: none; height: 320px; }
   /* botón flotante de WhatsApp (como en la web anterior) */
   .wa-float { position: fixed; right: 24px; bottom: 24px; z-index: 9; width: 56px; height: 56px; border-radius: 50%;
     display: grid; place-items: center; background: #25d366; color: #fff; box-shadow: 0 6px 18px rgb(0 0 0 / .22);
@@ -127,7 +137,7 @@
     footer.footer.closing { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
     main > section.section:not(.hero) > .wrap .fill { flex: none; height: auto; min-height: 0; }
     footer.closing .closing__cta .close__media { flex: none; min-height: 0; aspect-ratio: 4 / 3; }
-    .close-pair { flex: none; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .close-pair { flex: none; height: auto; grid-template-columns: minmax(0, 1fr); gap: 12px; }
     .close-pair > .close__media { height: auto; }
     .map-card { aspect-ratio: 4 / 3; min-height: 0; }
     footer.footer.closing > .wrap { display: block; }
