@@ -113,6 +113,15 @@
   footer.footer.closing > .wrap { height: auto; display: block; }
   footer.closing .closing__links { margin-top: var(--s-8); }
   .close-pair { flex: none; height: 320px; }
+  /* servicios en móvil y tablet: cada servicio con su foto al lado (la foto grande que cambia queda solo en ordenador) */
+  .row-thumb { display: none; }
+  @media (max-width: 1023px) {
+    #servicios .frame.frame--fill { display: none; }
+    #servicios .rows > li { grid-template-columns: 112px minmax(0, 1fr); column-gap: var(--s-4); align-items: start; }
+    #servicios .row-thumb { display: block; grid-row: 1 / span 2; width: 112px; height: 84px; object-fit: cover; border-radius: var(--r-md, 12px); }
+    #servicios .rows > li > .rows__name, #servicios .rows > li > p { grid-column: 2; }
+  }
+  @media (min-width: 640px) and (max-width: 1023px) { #servicios .rows > li { grid-template-columns: 160px minmax(0, 1fr); } #servicios .row-thumb { width: 160px; height: 110px; } }
   /* botón flotante de WhatsApp (como en la web anterior) */
   .wa-float { position: fixed; right: 24px; bottom: 24px; z-index: 9; width: 56px; height: 56px; border-radius: 50%;
     display: grid; place-items: center; background: #25d366; color: #fff; box-shadow: 0 6px 18px rgb(0 0 0 / .22);
@@ -195,11 +204,11 @@
       <div class="section-head"><h2 id="servicios-h">Lo que reparamos</h2><p>Trabajamos con todas las marcas y modelos, con recambios originales.</p></div>
       <div class="grid grid--top fill" data-peek>
         <ul class="rows span-6">
-          <li data-peek-to="chapa" tabindex="0"><span class="rows__name">Chapa y pintura al horno</span><p class="muted">Golpes, arañazos y piezas nuevas, con bancada electrónica y pintura al agua.</p></li>
-          <li data-peek-to="color" tabindex="0"><span class="rows__name">Cambios de color y acabados</span><p class="muted">Mates, satinados, bicolor y diseños hechos a mano para tu coche.</p></li>
-          <li data-peek-to="llantas" tabindex="0"><span class="rows__name">Llantas pintadas</span><p class="muted">En el color que elijas, también en dos tonos como las de la foto.</p></li>
-          <li data-peek-to="faros" tabindex="0"><span class="rows__name">Lunas y faros</span><p class="muted">Reparamos impactos, cambiamos lunas y pulimos faros amarillentos.</p></li>
-          <li data-peek-to="matriculas" tabindex="0"><span class="rows__name">Placas de matrícula</span><p class="muted">De chapa o metacrilato, para coche, remolque o portabicicletas.</p></li>
+          <li data-peek-to="chapa" tabindex="0"><img class="row-thumb" src="img/g09.webp" alt="" loading="lazy"><span class="rows__name">Chapa y pintura al horno</span><p class="muted">Golpes, arañazos y piezas nuevas, con bancada electrónica y pintura al agua.</p></li>
+          <li data-peek-to="color" tabindex="0"><img class="row-thumb" src="img/g19.webp" alt="" loading="lazy"><span class="rows__name">Cambios de color y acabados</span><p class="muted">Mates, satinados, bicolor y diseños hechos a mano para tu coche.</p></li>
+          <li data-peek-to="llantas" tabindex="0"><img class="row-thumb" src="img/g17.webp" alt="" loading="lazy"><span class="rows__name">Llantas pintadas</span><p class="muted">En el color que elijas, también en dos tonos como las de la foto.</p></li>
+          <li data-peek-to="faros" tabindex="0"><img class="row-thumb" src="img/prod2.webp" alt="" loading="lazy"><span class="rows__name">Lunas y faros</span><p class="muted">Reparamos impactos, cambiamos lunas y pulimos faros amarillentos.</p></li>
+          <li data-peek-to="matriculas" tabindex="0"><img class="row-thumb" src="img/g21.webp" alt="" loading="lazy"><span class="rows__name">Placas de matrícula</span><p class="muted">De chapa o metacrilato, para coche, remolque o portabicicletas.</p></li>
         </ul>
         <div class="frame frame--photo frame--fill span-6 start-7">
           <img class="frame__img" data-peek-for="chapa" src="img/g09.webp" alt="Coche dentro de la cabina de pintura con piezas preparadas al lado" loading="lazy" data-source="client" data-subject="cabina de pintura">
