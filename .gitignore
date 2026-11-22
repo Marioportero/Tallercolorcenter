@@ -20,6 +20,7 @@ assets/layout/demo.css
 assets/icons/*
 !assets/fonts/
 !assets/icons/icon.css
+!assets/icons/google-icon.svg
 assets/moments/*
 !assets/moments/moments.js
 !assets/moments/lib.js
