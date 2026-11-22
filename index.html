@@ -122,6 +122,34 @@
     #servicios .rows > li > .rows__name, #servicios .rows > li > p { grid-column: 2; }
   }
   @media (min-width: 640px) and (max-width: 1023px) { #servicios .rows > li { grid-template-columns: 160px minmax(0, 1fr); } #servicios .row-thumb { width: 160px; height: 110px; } }
+  /* ---------- animaciones (assets/site-motion.js pone .rv; sin script todo se ve quieto) ---------- */
+  :root { --ease-out: cubic-bezier(0.23, 1, 0.32, 1); --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1); }
+  @property --rate { syntax: "<number>"; inherits: true; initial-value: 0; }
+  /* entradas al hacer scroll: suben 18 px y aparecen, escalonadas; se usa `translate` para no pisar los hover del kit */
+  .rv .rv-item { opacity: 0; translate: 0 18px; transition: opacity 600ms var(--ease-out), translate 700ms var(--ease-out); transition-delay: var(--rv-d, 0ms); }
+  .rv .rv-item.is-in { opacity: 1; translate: 0 0; }
+  /* estrellas: se rellenan al entrar */
+  .stars { transition: --rate 1100ms var(--ease-out) 150ms; }
+  .rv .rv-item:not(.is-in) .stars { --rate: 0 !important; }
+  .rv .review.rv-item .stars { transition-delay: calc(var(--rv-d, 0ms) + 250ms); }
+  /* fotos de servicios en ordenador: fundido entre una y otra en vez de un cambio brusco */
+  #servicios .frame > img[data-peek-for] { display: block; transition: opacity 450ms var(--ease-out), scale 900ms var(--ease-out), visibility 0s; }
+  #servicios .frame > img[data-peek-for][hidden] { display: block !important; opacity: 0; scale: 1.04; visibility: hidden; transition: opacity 450ms var(--ease-out), scale 0s 450ms, visibility 0s 450ms; }
+  /* foto del inicio: se asienta al cargar */
+  .hero__media > img { animation: hero-settle 1600ms var(--ease-out) both; }
+  @keyframes hero-settle { from { scale: 1.06; } }
+  /* chincheta del mapa: cae con un pequeño rebote */
+  .map-card.pin-wait .map-pin { opacity: 0; translate: 0 -36px; }
+  .map-card.pin-in .map-pin { opacity: 1; translate: 0 0; transition: translate 650ms var(--ease-back), opacity 200ms var(--ease-out); }
+  @media (prefers-reduced-motion: reduce) {
+    .rv .rv-item { translate: none; transition: opacity 300ms ease; transition-delay: 0ms; }
+    .stars, .rv .review.rv-item .stars { transition: none; }
+    .rv .rv-item:not(.is-in) .stars { --rate: unset !important; }
+    .hero__media > img { animation: none; }
+    #servicios .frame > img[data-peek-for], #servicios .frame > img[data-peek-for][hidden] { transition: opacity 200ms ease, visibility 0s; scale: none; }
+    .map-card.pin-wait .map-pin { translate: none; }
+    .map-card.pin-in .map-pin { transition: opacity 200ms ease; }
+  }
   /* botón flotante de WhatsApp (como en la web anterior) */
   .wa-float { position: fixed; right: 24px; bottom: 24px; z-index: 9; width: 56px; height: 56px; border-radius: 50%;
     display: grid; place-items: center; background: #25d366; color: #fff; box-shadow: 0 6px 18px rgb(0 0 0 / .22);
@@ -426,5 +454,6 @@
 <script type="module" src="assets/system.js"></script>
 <script type="module" src="assets/motion/motion.js"></script>
 <script type="module" src="assets/layout/layout.js"></script>
+<script src="assets/site-motion.js" defer></script>
 </body>
 </html>
